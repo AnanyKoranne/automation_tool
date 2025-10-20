@@ -1,31 +1,93 @@
-# Plena Assignment — Kaggle dataset fetcher
+# Plena Assignment — Kaggle to HubSpot Data Pipeline
 
-This project downloads a Kaggle dataset (US baby names) using Playwright, extracts the ZIP and parses the CSV.
+This project automates the process of downloading a Kaggle dataset using Playwright (headless Chrome in Node.js), extracting baby name data, storing it in a MySQL database, and pushing it to HubSpot as Contacts.
 
-Prerequisites
-- Node 16+ recommended
+---
 
-Setup
-1. Copy .env.example to .env and fill KAGGLE_EMAIL and KAGGLE_PASSWORD.
-2. Install dependencies and Playwright browsers:
-   npm install
-   (postinstall will run `npx playwright install --with-deps` automatically)
+## 🧾 Scope of Assignment
 
-Run
-- Development (no build):
-  npm run dev
+Build a system to:
 
-- Build and run:
-  npm run build
-  npm start
+1. **Login to Kaggle** using email and password.
+2. **Download the dataset**: [US Baby Names by Year of Birth (CSV)](https://www.kaggle.com/datasets/thedevastator/us-baby-names-by-year-of-birth?select=babyNamesUSYOB-full.csv)
+3. **Extract and store data** in a MySQL database using Sequelize ORM.
+4. **Send the data to HubSpot CRM** using their API, stored as Contacts.
 
-Debugging
-- To see browser actions, set PW_HEADLESS=false and SLOW_MO=100 in .env.
-- If login fails, open the browser headful and inspect for 2FA or captcha.
+---
 
-What the script does
-- Downloads the dataset ZIP from Kaggle and saves as ./data/dataset.zip
-- Extracts the ZIP and finds the first .csv file and moves it to ./data/babyNames.csv
-- Parses the CSV and prints a row count and sample rows
+## 🛠️ Tech Stack
 
-If you want more changes (tests, CI, packaging), tell me which ones.
+* Node.js
+* TypeScript
+* Playwright (headless browser automation)
+* Sequelize ORM
+* MySQL
+* HubSpot API
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Environment Variables
+
+Create a `.env` file in the root with the following variables:
+
+```env
+KAGGLE_EMAIL=your_email@example.com
+KAGGLE_PASSWORD=your_password
+PW_HEADLESS=false
+SLOW_MO=100
+HUBSPOT_API_KEY=your_hubspot_api_key
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+> This will also run `npx playwright install --with-deps` post-install.
+
+---
+
+## 🚀 Run the Project
+
+### Development Mode (no build):
+
+```bash
+npm run dev
+```
+
+### Build and Run:
+
+```bash
+npm run build
+npm start
+```
+
+---
+
+## 🔍 Debugging Tips
+
+* Set `PW_HEADLESS=false` to run Playwright with a visible browser.
+* Use `SLOW_MO=100` to slow down browser actions for visibility.
+* If login fails, manually inspect the page to check for captcha or 2FA.
+
+---
+
+## 📦 What the Script Does
+
+* Logs into Kaggle using headless Chrome (Playwright)
+* Navigates to the dataset and downloads the CSV
+* Extracts baby name data from the CSV
+* Stores records in MySQL DB via Sequelize ORM
+
+  * Extracted fields: **Name**, **Sex**
+* Sends records to HubSpot via API as Contacts
+
+---
+
+## 🔗 Useful Links
+
+* [Playwright Documentation](https://playwright.dev/)
+* [HubSpot CRM API Docs](https://developers.hubspot.com/docs/api/crm/contacts)
