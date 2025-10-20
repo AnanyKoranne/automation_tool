@@ -1,0 +1,38 @@
+{
+  "name": "plena-assignment",
+  "version": "1.0.0",
+  "description": "Automation script that logs into Kaggle, downloads dataset, stores data in MySQL via Sequelize, and pushes to HubSpot.",
+  "main": "dist/main.js",
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts --exec \"ts-node src/main.ts\"",
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "postinstall": "npx playwright install --with-deps"
+  },
+  "keywords": [
+    "typescript",
+    "playwright",
+    "sequelize",
+    "mysql",
+    "hubspot",
+    "automation",
+    "kaggle"
+  ],
+  "author": "Anany Koranne",
+  "license": "ISC",
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "axios": "^1.6.8",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^16.3.1",
+    "mysql2": "^3.9.4",
+    "playwright": "^1.45.0",
+    "sequelize": "^6.35.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.4.5"
+  }
+}

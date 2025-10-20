@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    /* === Core Compile Settings === */
+    "target": "ES2020",                    // Modern JS features
+    "module": "commonjs",                  // Node.js module system
+    "rootDir": "./src",                    // Where your TS files live
+    "outDir": "./dist",                    // Compiled JS output
+
+    /* === Type Checking & Interop === */
+    "strict": true,                        // Enables all strict type checks
+    "esModuleInterop": true,               // Allows default import of CommonJS modules
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,                  // Skip library type checking for speed
+
+    /* === Node.js Specific === */
+    "types": ["node"],                     // Include Node.js types
+    "moduleResolution": "node",            // How imports are resolved
+
+    /* === Source Maps (optional but helpful) === */
+    "sourceMap": true                      // For debugging TypeScript in VS Code
+  },
+  "include": ["src"],                      // Include all source files
+  "exclude": ["node_modules", "dist"]      // Skip these directories
+}
