@@ -1,4 +1,4 @@
-# Plena Assignment — Kaggle to HubSpot Data Pipeline
+# Kaggle to HubSpot Data Pipeline
 
 This project automates the process of downloading a Kaggle dataset using Playwright (headless Chrome in Node.js), extracting baby name data, storing it in a MySQL database, and pushing it to HubSpot as Contacts.
 
